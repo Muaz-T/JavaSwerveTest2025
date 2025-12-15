@@ -47,30 +47,30 @@ Matrix<N3, N1> QUESTNAV_STD_DEVS =
   public void robotPeriodic() {
     CommandScheduler.getInstance().run(); 
 
-    if (questNav.isTracking()) {
-        // Get the latest pose data frames from the Quest
-        PoseFrame[] questFrames = questNav.getAllUnreadPoseFrames();
+    // if (questNav.isTracking()) {
+    //     // Get the latest pose data frames from the Quest
+    //     PoseFrame[] questFrames = questNav.getAllUnreadPoseFrames();
 
-        // Loop over the pose data frames and send them to the pose estimator
-        for (PoseFrame questFrame : questFrames) {
-            // Get the pose of the Quest
-            Pose3d questPose = questFrame.questPose3d();
-            // Get timestamp for when the data was sent
-            double timestamp = questFrame.dataTimestamp();
+    //     // Loop over the pose data frames and send them to the pose estimator
+    //     for (PoseFrame questFrame : questFrames) {
+    //         // Get the pose of the Quest
+    //         Pose3d questPose = questFrame.questPose3d();
+    //         // Get timestamp for when the data was sent
+    //         double timestamp = questFrame.dataTimestamp();
 
-            // Transform by the mount pose to get your robot pose
-            Pose3d robotPose = questPose;
+    //         // Transform by the mount pose to get your robot pose
+    //         Pose3d robotPose = questPose;
 
-            // You can put some sort of filtering here if you would like!
+    //         // You can put some sort of filtering here if you would like!
 
-            // Add the measurement to our estimator
-            m_robotContainer.drivetrain.addVisionMeasurement(robotPose.toPose2d(), timestamp, QUESTNAV_STD_DEVS);
+    //         // Add the measurement to our estimator
+    //         // m_robotContainer.drivetrain.addVisionMeasurement(robotPose.toPose2d(), timestamp, QUESTNAV_STD_DEVS);
 
-            SmartDashboard.putNumber("QuestPoseX", questPose.getX());
-            SmartDashboard.putNumber("QuestPoseY", questPose.getY());
+    //         SmartDashboard.putNumber("QuestPoseX", questPose.getX());
+    //         SmartDashboard.putNumber("QuestPoseY", questPose.getY());
 
-        }
-    }
+    //     }
+    // }
   }
 
   @Override
